@@ -56,17 +56,20 @@ body {
 .logo {
   max-width: 380px;
   height: auto;
-  margin-top: 120px; /* duwt het logo naar beneden */
+  margin-top: 80px; /* lager zetten onder rode gloed */
+  margin-bottom: 10px;
 }
 
 /* HERO */
 
 .hero {
-  flex: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: clamp(32px, 7vw, 80px);
+  gap: clamp(32px, 5vw, 60px);
   align-items: center;
+  padding-top: 40px;   /* ruimte onder logo */
+  padding-bottom: 40px; /* minder witruimte onder fles */
+  max-height: 650px;   /* hero inkorten */
 }
 
 /* TEKST */
