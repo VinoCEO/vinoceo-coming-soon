@@ -1,4 +1,4 @@
-/* Reset */
+/* RESET */
 *,
 *::before,
 *::after {
@@ -7,6 +7,7 @@
   padding: 0;
 }
 
+/* THEME VARIABELEN */
 :root {
   --bg: #050505;
   --brown: #1b1512;
@@ -14,11 +15,11 @@
   --gold-soft: #c3a057;
   --wine-dark: #240308;
   --wine-mid: #5a0712;
-  --wine-light: #981628;
+  --wine-light: #b91c33;
   --text-main: #f6eee3;
 }
 
-/* Base */
+/* BASIS */
 
 html,
 body {
@@ -28,41 +29,46 @@ body {
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  background: radial-gradient(circle at top, #141010 0%, var(--bg) 55%, #000 100%);
+  background: radial-gradient(circle at top, #151012 0%, var(--bg) 55%, #000 100%);
   color: var(--text-main);
 }
 
-/* Layout */
+/* PAGINA LAYOUT */
 
 .page {
   min-height: 100vh;
-  padding: 24px clamp(24px, 5vw, 64px);
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 32px clamp(24px, 5vw, 48px);
   display: flex;
   flex-direction: column;
 }
 
+/* HEADER */
+
 .header {
   display: flex;
-  justify-content: center;
-  margin-bottom: clamp(24px, 6vh, 40px);
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: clamp(32px, 6vh, 48px);
 }
 
 .logo {
-  max-width: 260px;
+  max-width: 220px;
   height: auto;
 }
 
-/* Hero */
+/* HERO */
 
 .hero {
   flex: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  gap: clamp(32px, 8vw, 80px);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(32px, 7vw, 80px);
   align-items: center;
 }
 
-/* Text */
+/* TEKST */
 
 .hero-text {
   max-width: 520px;
@@ -74,26 +80,26 @@ body {
   text-transform: uppercase;
   color: var(--gold-soft);
   font-size: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .hero-text h1 {
   font-family: "Georgia", "Times New Roman", serif;
-  font-size: clamp(32px, 4.5vw, 52px);
-  line-height: 1.25;
-  letter-spacing: 0.06em;
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.2;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .subtitle {
-  font-size: clamp(14px, 1.6vw, 18px);
-  line-height: 1.8;
+  font-size: clamp(14px, 1.7vw, 18px);
+  line-height: 1.9;
   color: #c8beb0;
 }
 
-/* Visual */
+/* VISUAL BLOK */
 
 .hero-visual {
   display: flex;
@@ -104,60 +110,61 @@ body {
 .wine-orbit {
   position: relative;
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
   aspect-ratio: 3 / 5;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Rode wijn achter de fles */
+/* RODE WIJN ACHTER DE FLES */
 
 .wine-liquid {
   position: absolute;
-  inset: 0;
+  inset: -10%;
   border-radius: 999px;
   background:
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 55%),
-    radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.04), transparent 60%),
-    radial-gradient(circle at 60% 0%, var(--wine-light), transparent 60%),
-    radial-gradient(circle at 85% 70%, var(--wine-mid), transparent 60%),
-    radial-gradient(circle at 15% 65%, var(--wine-dark), transparent 70%);
-  filter: blur(8px);
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12), transparent 55%),
+    radial-gradient(circle at 40% 90%, rgba(255, 255, 255, 0.06), transparent 60%),
+    radial-gradient(circle at 50% 5%, var(--wine-light), transparent 65%),
+    radial-gradient(circle at 90% 70%, var(--wine-mid), transparent 65%),
+    radial-gradient(circle at 10% 70%, var(--wine-dark), transparent 75%);
+  filter: blur(10px);
   box-shadow:
-    0 0 80px rgba(0, 0, 0, 0.9),
-    0 0 110px rgba(140, 0, 26, 0.6);
-  animation: wine-flow 14s ease-in-out infinite alternate;
+    0 0 80px rgba(0, 0, 0, 0.95),
+    0 0 120px rgba(150, 0, 30, 0.75);
+  opacity: 0.95;
+  animation: wine-flow 16s ease-in-out infinite alternate;
 }
 
-/* Wijnfles */
+/* FLES */
 
 .wine-bottle {
   position: relative;
   z-index: 1;
   max-height: 100%;
-  max-width: 80%;
+  max-width: 82%;
   object-fit: contain;
   filter:
-    drop-shadow(0 35px 40px rgba(0, 0, 0, 0.9))
+    drop-shadow(0 40px 45px rgba(0, 0, 0, 0.95))
     drop-shadow(0 0 26px rgba(0, 0, 0, 0.85));
-  animation: bottle-sway 9s ease-in-out infinite alternate;
+  animation: bottle-sway 10s ease-in-out infinite alternate;
 }
 
-/* Animations */
+/* ANIMATIES */
 
 @keyframes wine-flow {
   0% {
-    transform: translate3d(-8px, 6px, 0) scale(1);
-    filter: blur(8px);
-  }
-  50% {
-    transform: translate3d(4px, -4px, 0) scale(1.05);
+    transform: translate3d(-10px, 8px, 0) scale(1);
     filter: blur(9px);
   }
-  100% {
-    transform: translate3d(10px, 4px, 0) scale(1.1);
+  50% {
+    transform: translate3d(6px, -6px, 0) scale(1.07);
     filter: blur(10px);
+  }
+  100% {
+    transform: translate3d(12px, 4px, 0) scale(1.12);
+    filter: blur(11px);
   }
 }
 
@@ -166,19 +173,19 @@ body {
     transform: translateY(0) rotate(-2deg);
   }
   50% {
-    transform: translateY(-6px) rotate(2deg);
+    transform: translateY(-8px) rotate(2deg);
   }
   100% {
     transform: translateY(0) rotate(-1deg);
   }
 }
 
-/* Footer */
+/* FOOTER */
 
 .footer {
   margin-top: clamp(24px, 5vh, 32px);
   padding-top: 16px;
-  border-top: 1px solid rgba(214, 178, 100, 0.2);
+  border-top: 1px solid rgba(214, 178, 100, 0.22);
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -186,12 +193,22 @@ body {
   color: #8c8275;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 
 @media (max-width: 900px) {
+  .page {
+    padding-inline: 20px;
+  }
+
   .hero {
     grid-template-columns: 1fr;
     text-align: center;
+    row-gap: 40px;
+  }
+
+  .header {
+    justify-content: center;
+    margin-bottom: 24px;
   }
 
   .hero-text {
@@ -199,6 +216,11 @@ body {
   }
 
   .subtitle {
+    margin-inline: auto;
+  }
+
+  .hero-visual {
+    max-width: 320px;
     margin-inline: auto;
   }
 
