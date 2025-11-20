@@ -48,14 +48,15 @@ body {
 
 .header {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;  /* Centreert logo */
   align-items: center;
-  margin-bottom: clamp(32px, 6vh, 48px);
+  margin-bottom: clamp(28px, 4vh, 36px); /* Logo dichter bij content */
 }
 
 .logo {
-  max-width: 380px; /* GROTER LOGO (optie B) */
+  max-width: 380px;
   height: auto;
+  margin-top: 20px; /* Logo iets lager */
 }
 
 /* HERO */
