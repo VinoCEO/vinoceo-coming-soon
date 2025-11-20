@@ -54,7 +54,7 @@ body {
 }
 
 .logo {
-  max-width: 220px;
+  max-width: 380px; /* GROTER LOGO (optie B) */
   height: auto;
 }
 
@@ -97,6 +97,54 @@ body {
   font-size: clamp(14px, 1.7vw, 18px);
   line-height: 1.9;
   color: #c8beb0;
+  margin-bottom: 24px;
+}
+
+/* CTA KNOP */
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 26px;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  transition:
+    color 0.2s ease-out,
+    border-color 0.2s ease-out,
+    background 0.2s ease-out,
+    transform 0.2s ease-out,
+    box-shadow 0.2s ease-out;
+}
+
+.cta-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.25), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+
+.cta-button:hover {
+  background: var(--gold);
+  color: #1a130f;
+  border-color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+}
+
+.cta-button:hover::before {
+  opacity: 1;
 }
 
 /* VISUAL BLOK */
@@ -117,24 +165,46 @@ body {
   justify-content: center;
 }
 
-/* RODE WIJN ACHTER DE FLES */
+/* RODE WIJN ACHTER DE FLES – ORGANISCHER */
 
 .wine-liquid {
   position: absolute;
-  inset: -10%;
-  border-radius: 999px;
+  inset: -12% -18%;
+  border-radius: 60% 45% 70% 50%;
   background:
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12), transparent 55%),
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.15), transparent 55%),
     radial-gradient(circle at 40% 90%, rgba(255, 255, 255, 0.06), transparent 60%),
-    radial-gradient(circle at 50% 5%, var(--wine-light), transparent 65%),
-    radial-gradient(circle at 90% 70%, var(--wine-mid), transparent 65%),
-    radial-gradient(circle at 10% 70%, var(--wine-dark), transparent 75%);
-  filter: blur(10px);
+    radial-gradient(circle at 55% 0%, var(--wine-light), transparent 65%),
+    radial-gradient(circle at 95% 65%, var(--wine-mid), transparent 70%),
+    radial-gradient(circle at 8% 70%, var(--wine-dark), transparent 75%);
+  filter: blur(14px);
   box-shadow:
     0 0 80px rgba(0, 0, 0, 0.95),
-    0 0 120px rgba(150, 0, 30, 0.75);
+    0 0 120px rgba(150, 0, 30, 0.8);
   opacity: 0.95;
-  animation: wine-flow 16s ease-in-out infinite alternate;
+  animation: wine-flow 18s ease-in-out infinite alternate;
+}
+
+/* Extra lagen voor meer “vloeibaar” effect */
+.wine-liquid::before,
+.wine-liquid::after {
+  content: "";
+  position: absolute;
+  inset: 10% 15%;
+  border-radius: 70% 50% 60% 80%;
+  background: radial-gradient(circle at 30% 10%, rgba(255, 255, 255, 0.18), transparent 60%);
+  mix-blend-mode: screen;
+  opacity: 0.4;
+}
+
+.wine-liquid::before {
+  animation: wine-swell 20s ease-in-out infinite alternate;
+}
+
+.wine-liquid::after {
+  inset: 18% 8%;
+  opacity: 0.25;
+  animation: wine-shift 26s ease-in-out infinite alternate;
 }
 
 /* FLES */
@@ -155,16 +225,34 @@ body {
 
 @keyframes wine-flow {
   0% {
-    transform: translate3d(-10px, 8px, 0) scale(1);
-    filter: blur(9px);
+    transform: translate3d(-10px, 10px, 0) scale(1);
+    border-radius: 60% 45% 70% 50%;
   }
   50% {
-    transform: translate3d(6px, -6px, 0) scale(1.07);
-    filter: blur(10px);
+    transform: translate3d(4px, -8px, 0) scale(1.05);
+    border-radius: 65% 55% 65% 55%;
   }
   100% {
-    transform: translate3d(12px, 4px, 0) scale(1.12);
-    filter: blur(11px);
+    transform: translate3d(12px, 6px, 0) scale(1.1);
+    border-radius: 55% 65% 75% 45%;
+  }
+}
+
+@keyframes wine-swell {
+  0% {
+    transform: translate3d(-6px, 4px, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(8px, -6px, 0) scale(1.08);
+  }
+}
+
+@keyframes wine-shift {
+  0% {
+    transform: translate3d(4px, -3px, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(-6px, 5px, 0) scale(1.12);
   }
 }
 
@@ -222,6 +310,11 @@ body {
   .hero-visual {
     max-width: 320px;
     margin-inline: auto;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
   }
 
   .footer {
